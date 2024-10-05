@@ -3,7 +3,6 @@ import jwt from "jsonwebtoken";
 import bcrypt from "bcryptjs";
 import User from "../models/User";
 import multer from "multer";
-import { GridFsStorage } from "multer-gridfs-storage";
 import Token from "../models/Token";
 
 export const generateToken = (user: any) => {
