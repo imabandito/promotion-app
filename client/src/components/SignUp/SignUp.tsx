@@ -113,7 +113,7 @@ export const SignUp = () => {
           type="password"
           register={register('passwordRepeat', {
             required: 'Confirm Password is required',
-            validate: (value) =>
+            validate: (value: string) =>
               value === watch('password') || 'Passwords should match',
             onChange: () => trigger('passwordRepeat'),
           })}

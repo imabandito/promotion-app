@@ -4,6 +4,7 @@ import { SimpleLink } from '../UI/SimpleLink/SimpleLink';
 import TextInput from '../UI/TextInput/TextInput';
 import { useForm } from 'react-hook-form';
 import { emailRegex } from '../../configs/constants';
+import { AuthFormWrapper } from '../AuthFormWrapper/AuthFormWrapper';
 
 export interface IRecoveryFormValues {
   email: string;
@@ -23,36 +24,35 @@ export const PasswordRecovery = () => {
   });
 
   return (
-    <div className={styles.forgot}>
-      <div className={styles.forgotMainContent}>
-        <h1>Password recovery</h1>
-        <h6>Enter the email you're using for your account.</h6>
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <TextInput
-            title="Email Address"
-            placeholder="Enter your email address"
-            extraClass={styles.forgotEmail}
-            register={{
-              ...register('email', {
-                required: 'Email is required',
-                pattern: {
-                  value: emailRegex,
-                  message: 'Invalid email address',
-                },
-              }),
-            }}
-            error={dirtyFields.email && errors.email?.message}
-          />
-          <Button extraClass={styles.forgotButton} disabled={!isValid}>
-            Reset
-          </Button>
-        </form>
-        <SimpleLink
-          text="Back to Login"
-          to="/login"
-          extraClass={styles.forgotLogin}
+    <AuthFormWrapper
+      title="Password recovery"
+      subtitle="Enter the email you're using for your account."
+    >
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <TextInput
+          title="Email Address"
+          placeholder="Enter your email address"
+          extraClass={styles.forgotEmail}
+          register={{
+            ...register('email', {
+              required: 'Email is required',
+              pattern: {
+                value: emailRegex,
+                message: 'Invalid email address',
+              },
+            }),
+          }}
+          error={dirtyFields.email && errors.email?.message}
         />
-      </div>
-    </div>
+        <Button extraClass={styles.forgotButton} disabled={!isValid}>
+          Reset
+        </Button>
+      </form>
+      <SimpleLink
+        text="Back to Login"
+        to="/login"
+        extraClass={styles.forgotLogin}
+      />
+    </AuthFormWrapper>
   );
 };
