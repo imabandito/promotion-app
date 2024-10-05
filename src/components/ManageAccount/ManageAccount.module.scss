@@ -1,0 +1,16 @@
+.manageAccount {
+    position: relative;
+    width: 100%;
+    max-width: 630px;
+    min-height: 567px;
+    padding: 29px 35px 31px;
+    background-color: var(--backgroundLight);
+    border-radius: 5px;
+
+    &Title {
+        font-size: 1.3125rem;
+        font-weight: 700;
+        margin-bottom: 21px;
+        color: var(--title);
+    }
+}

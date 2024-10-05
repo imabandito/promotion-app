@@ -1,0 +1,31 @@
+.header {
+    background-color: var(--header);
+    padding-bottom: 34px;
+
+    &Container {
+        max-width: 1069px;
+        margin: 0 auto;
+    }
+
+    &LogoWrapper {
+        img {
+            width: 178px;
+        }
+    }
+
+    &Title {
+        margin-top: 16px;
+        display: flex;
+        align-items: center;
+
+        svg path {
+            stroke: var(--backgroundLight);
+        }
+    }
+
+    h2 {
+        font-size: 28px;
+        font-weight: 700;
+        color: var(--backgroundLight);
+    }
+}

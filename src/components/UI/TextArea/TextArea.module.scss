@@ -1,0 +1,60 @@
+.TextArea {
+
+    label,
+    textarea {
+        color: var(--secondaryTextColor);
+        width: 100%;
+    }
+
+    textarea {
+        margin-top: 10px;
+        padding: 18px 32px;
+        background-color: var(--background);
+        border-radius: 3px;
+        font-size: 1rem;
+        outline: none;
+        color: var(--title);
+        border: 1px solid transparent;
+
+        &:focus,
+        &:hover {
+            border-color: var(--primary);
+        }
+
+        &::-webkit-outer-spin-button,
+        &::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+    }
+
+    label {
+        font-weight: 500;
+    }
+
+    &Hint {
+        margin-top: 7px;
+        font-size: 0.8125rem;
+        color: var(--secondaryTextColor);
+    }
+
+    &Error {
+        textarea {
+            border-color: #ff2020;
+
+            &:focus {
+                border-color: #ff2020;
+            }
+        }
+    }
+
+    &ErrorText {
+        height: 1.32rem;
+        margin-top: 6px;
+        color: #ff2020;
+        font-size: 0.875rem;
+        text-align: end;
+        display: flex;
+        justify-content: space-between;
+    }
+}

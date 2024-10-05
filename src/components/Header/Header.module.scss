@@ -1,0 +1,23 @@
+@import '../../style/variables';
+
+.header {
+    position: fixed;
+    width: calc(100% - 229px);
+    height: 79px;
+    z-index: 3;
+    background-color: var(--backgroundLight);
+    padding: 13px 26px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    border-bottom: 1px solid var(--divider);
+
+    left: 230px;
+
+    @media (max-width:$tablet-xl) {
+        width: 100%;
+        padding-left: 90px;
+        left: 0;
+    }
+}

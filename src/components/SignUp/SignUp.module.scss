@@ -1,0 +1,53 @@
+.signup {
+    &Button {
+        margin-top: 26px;
+    }
+
+    &Forgot {
+        display: block;
+        margin-top: 27px;
+    }
+
+    &Email {
+        margin-top: 6px;
+    }
+
+    &Password {
+        margin-top: 6px;
+    }
+
+    &PasswordConfirm {
+        margin-top: 24px;
+    }
+
+    &Divider {
+        margin-top: 30px;
+    }
+
+    &Socials {
+        margin-top: 29px;
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+    }
+
+    &Low {
+        text-align: center;
+
+        &>span {
+            color: var(--secondaryTextColor);
+            font-size: 1rem;
+        }
+    }
+
+    &General {
+        display: flex;
+        gap: 30px;
+    }
+
+    &Agree {
+        margin-top: 8px;
+        display: flex;
+        color: var(--secondaryTextColor);
+    }
+}

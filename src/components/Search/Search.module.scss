@@ -1,0 +1,43 @@
+@import '../../style/variables';
+
+.search {
+    background-color: var(--background);
+    font-size: 0.875rem;
+    color: var(--title);
+    border-radius: 200px;
+    padding: 14px 14px 14px 64px;
+    width: 100%;
+    outline: none;
+    border: 1px solid transparent;
+    transition: 0.2s;
+
+    &::placeholder {
+        color: var(--secondaryTextColor);
+
+    }
+
+    &:focus,
+    &:hover {
+        border-color: var(--primary);
+    }
+
+    &Wrapper {
+        position: relative;
+        width: 100%;
+        max-width: 365px;
+    }
+
+    &Icon {
+        position: absolute;
+        top: 17px;
+        left: 29px;
+    }
+
+    @media (max-width: $mobile) {
+        padding-left: 35px;
+
+        &Icon {
+            left: 12px;
+        }
+    }
+}

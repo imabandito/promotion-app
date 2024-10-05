@@ -1,0 +1,14 @@
+.accountAvatar {
+    width: 100%;
+    max-width: 464px;
+
+    &Buttons {
+        margin-top: 22px;
+        display: flex;
+        gap: 17px;
+
+        button {
+            max-width: 114px;
+        }
+    }
+}

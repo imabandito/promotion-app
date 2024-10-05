@@ -1,0 +1,37 @@
+.authForm{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 20px;
+    max-width: 464px;
+    width: 100%;
+
+    &Titles{
+        margin-bottom: 47px;
+    }
+
+    &MainContent {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    &Icon {
+        width: 2.9375rem;
+        height: 2.975rem;
+    }
+
+    h1 {
+        margin-top: 45px;
+        font-size: 1.875rem;
+        font-weight: bold;
+        color: var(--title);
+    }
+
+    h6 {
+        font-size: 1rem;
+        color: var(--black);
+    }
+}

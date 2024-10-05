@@ -1,0 +1,30 @@
+.error {
+    &Wrapper{
+        background-color: var(--background);
+        height: 100vh;
+    }
+
+    &Title,
+    &Link {
+        padding-top: 10%;
+        font-size: 2rem;
+        font-weight: lighter;
+        text-align: center;
+    }
+
+    &Title{
+        color: var(--title);
+    }
+
+    &Link {
+        display: block;
+        padding-top: 2%;
+        font-weight: 300;
+        color: var(--primary);
+        transition: 0.2s;
+
+        &:hover {
+            color: var(--status);
+        }
+    }
+}

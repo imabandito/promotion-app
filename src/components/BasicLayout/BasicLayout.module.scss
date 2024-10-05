@@ -1,0 +1,55 @@
+@import '../../style/variables';
+
+%flex-column {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.main {
+    background-color: var(--background);
+    min-height: 100vh;
+    display: flex;
+}
+
+.wrapper {
+    padding: 79px 0 0 230px;
+    min-height: 100vh;
+}
+
+.container {
+    @extend %flex-column;
+    height: 100%;
+    padding: 26px 35px;
+
+    &Meduim {
+        max-width: 1440px
+    }
+
+    &Large {
+        max-width: 1920px
+    }
+
+    &AlignCenter {
+        align-items: center;
+    }
+
+    &AlignStart {
+        align-items: start;
+    }
+}
+
+.content {
+    @extend %flex-column;
+}
+
+@media (max-width:$tablet-xl) {
+    .wrapper {
+        padding-left: 0;
+    }
+}
+@media screen and (max-width: $mobile){
+    .container{
+        padding: 15px 20px;
+    }
+}

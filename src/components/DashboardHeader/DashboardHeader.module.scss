@@ -1,0 +1,52 @@
+@import '../../style/variables';
+
+.container {
+    max-width: none;
+}
+
+.dashboard {
+    &Header {
+        display: flex;
+        width: 100%;
+    }
+
+    &Title {
+        font-size: 1.3125rem;
+        font-weight: 700;
+        color: var(--title);
+        margin-right: 29px;
+        white-space: nowrap
+    }
+
+    &Actions {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+
+    &Filters {
+        display: flex;
+        gap: 15px;
+        flex-wrap: wrap;
+    }
+
+    &Content {
+        display: flex;
+    }
+
+}
+
+@media (min-width:769px) and (max-width: 850px) {
+    .dashboardActions {
+        gap: 15px;
+        justify-content: space-evenly;
+    }
+}
+
+@media (max-width: 1070px) {
+    .dashboardHeader {
+        flex-wrap: wrap;
+    }
+}

@@ -1,0 +1,33 @@
+.switch{
+    position: relative;
+    width: fit-content;
+    padding: 3px 10px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background-color: var(--background);
+    border-radius: 31px;
+    overflow: hidden;
+
+    svg{
+        z-index: 2;
+    }
+
+    &Active{
+        position: absolute;
+        width: 50%;
+        height: 100%;
+        background-color: var(--primary);
+        border-radius: 17px;
+        transition: 0.5s;
+        left: 0;
+
+        &Left{
+            transform: translateX(0);
+        }
+
+        &Right{
+            transform: translateX(100%);
+        }
+    }
+}

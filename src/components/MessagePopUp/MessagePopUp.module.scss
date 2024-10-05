@@ -1,0 +1,33 @@
+.pop {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    border-radius: 0px 0px 15px 15px;
+    padding: 5px 20px;
+    color: #fff;
+    transition: 0.5s;
+    text-align: center;
+
+    h6 {
+        font-size: 1.2rem;
+    }
+
+    &error {
+        background-color: red;
+    }
+
+    &success {
+        background-color: green;
+    }
+
+    &warning {
+        background-color: yellow;
+    }
+
+    &Hide {
+        visibility: hidden;
+        opacity: 0;
+    }
+}

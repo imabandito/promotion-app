@@ -1,0 +1,65 @@
+.textInput {
+
+    label,
+    input {
+        color: var(--secondaryTextColor);
+        width: 100%;
+    }
+
+    input {
+        margin-top: 10px;
+        padding: 1.125rem 2rem;
+        background-color: var(--background);
+        border-radius: 3px;
+        font-size: 1rem;
+        outline: none;
+        color: var(--title);
+        border: 1px solid transparent;
+
+        &:focus,
+        &:hover {
+            border-color: var(--primary);
+        }
+
+        &::-webkit-outer-spin-button,
+        &::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        &[type=number] {
+            appearance: textfield;
+            -moz-appearance: textfield;
+        }
+    }
+
+    label {
+        font-weight: 500;
+    }
+
+    &Hint {
+        margin-top: 7px;
+        font-size: 0.8125rem;
+        color: var(--secondaryTextColor);
+    }
+
+    &Error {
+        input {
+            border-color: red;
+
+            &:focus {
+                border-color: red;
+            }
+        }
+    }
+
+    &ErrorText {
+        height: 1.32rem;
+        margin-top: 6px;
+        color: #ff2020;
+        font-size: 0.875rem;
+        text-align: end;
+        display: flex;
+        justify-content: space-between;
+    }
+}

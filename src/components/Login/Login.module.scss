@@ -1,0 +1,70 @@
+.login {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 20px;
+    max-width: 464px;
+    width: 100%;
+
+    &MainContent {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    &Hand {
+        width: 2.9375rem;
+        height: 2.975rem;
+    }
+
+    h1 {
+        margin-top: 45px;
+        font-size: 1.875rem;
+        font-weight: bold;
+        color: var(--title);
+    }
+
+    h6 {
+        font-size: 1rem;
+        color: var(--black);
+    }
+
+    &Button {
+        margin-top: 20px;
+    }
+
+    &Forgot {
+        display: block;
+        margin-top: 6px;
+    }
+
+    &Email {
+        margin-top: 27px;
+    }
+
+    &Password {
+        margin-top: 6px;
+    }
+
+    &Divider {
+        margin-top: 30px;
+    }
+
+    &Socials {
+        margin-top: 29px;
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+    }
+
+    &Low {
+        text-align: center;
+
+        &>span {
+            color: var(--secondaryTextColor);
+            font-size: 1rem;
+        }
+    }
+}

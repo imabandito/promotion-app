@@ -1,0 +1,73 @@
+@import '../../style/variables';
+
+.articleAction {
+    width: 100%;
+    max-width: 534px;
+    padding: 29px 35px 31px;
+    display: flex;
+    justify-content: center;
+    background-color: var(--backgroundLight);
+    border-radius: 5px;
+
+    &Content{
+        width: 100%;
+    }
+
+    h3 {
+        font-size: 1.3125rem;
+        font-weight: 700;
+        margin-bottom: 33px;
+        color: var(--title);
+    }
+
+    &Title {
+        margin-top: 28px;
+    }
+
+    &Text {
+        textarea {
+            resize: none;
+            height: 240px;
+            width: 100%;
+        }
+    }
+
+    &Buttons {
+        margin-top: 22px;
+        display: flex;
+        gap: 17px;
+
+        button {
+            max-width: 114px;
+            padding: 12px 33px 10px;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+    }
+
+    &Categories {
+        margin-bottom: 20px;
+    }
+
+    &Cancel {
+        border: 1px solid var(--secondaryTextColor);
+        color: var(--secondaryTextColor);
+        background-color: var(--backgroundLight);
+
+        &:hover {
+            background-color: var(--background);
+        }
+    }
+
+    @media (max-width: $mobile) {
+        padding: 20px 20px 31px;
+
+        h3 {
+            margin-bottom: 16px;
+        }
+
+        &Title {
+            margin-top: 15px;
+        }
+    }
+}

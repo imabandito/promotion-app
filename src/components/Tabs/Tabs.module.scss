@@ -1,0 +1,34 @@
+.tabs {
+    &Header {
+        padding: 0px 8px;
+    }
+
+    &Button {
+        position: relative;
+        padding: 12px;
+        font-size: 0.875rem;
+        font-weight: 500;
+        color: var(--titleLight);
+
+        &.tabsActive {
+            color: var(--primary);
+
+            &::after {
+                content: '';
+                display: block;
+                position: absolute;
+                bottom: -1px;
+                left: 0;
+                z-index: 1;
+                height: 2px;
+                width: 100%;
+                background-color: var(--primary);
+                border-radius: 1px;
+            }
+        }
+    }
+
+    &Content {
+        padding-top: 35px;
+    }
+}

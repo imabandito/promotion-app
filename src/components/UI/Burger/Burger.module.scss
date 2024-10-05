@@ -1,0 +1,71 @@
+.burger {
+    display: block;
+    z-index: 3;
+    width: 40px;
+    height: 30px;
+    position: relative;
+    transform: rotate(0deg);
+    transition: .5s ease-in-out;
+    cursor: pointer;
+
+    span {
+        display: block;
+        position: absolute;
+        height: 3px;
+        width: 100%;
+        background: var(--header);
+        border-radius: 9px;
+        opacity: 1;
+        left: 0;
+        transform: rotate(0deg);
+    }
+
+    span:nth-child(1) {
+        top: 0px;
+    }
+
+    span:nth-child(2),
+    span:nth-child(3) {
+        top: 8px;
+    }
+
+    span:nth-child(4) {
+        top: 17px;
+    }
+
+    &Open {
+        span:nth-child(1) {
+            top: 13px;
+            width: 0%;
+            left: 50%;
+        }
+
+        span:nth-child(2) {
+            transform: rotate(45deg);
+            top: 13px;
+        }
+
+        span:nth-child(3) {
+            transform: rotate(-45deg);
+            top: 13px;
+        }
+
+        span:nth-child(4) {
+            top: 13px;
+            width: 0%;
+            left: 50%;
+        }
+    }
+
+    &WrapperOpen {
+        position: fixed;
+        z-index: 4;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+}
+
+body:has(.burgerOpen) {
+    overflow: hidden;
+}

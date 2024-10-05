@@ -1,0 +1,139 @@
+.article {
+    &Wrapper {
+        width: 100%;
+        max-width: 1070px;
+        height: 100%;
+        border-radius: 6px;
+        overflow: hidden;
+    }
+
+    &ImageWrapper {
+        height: 40vh;
+        width: 100%;
+        position: relative;
+        background: var(--backgroundLight);
+        border-radius: 20px;
+        overflow: hidden;
+
+        img {
+            height: 100%;
+            width: 100%;
+            object-fit: contain;
+        }
+    }
+
+    &Content {
+        padding: 15px 25px;
+        background-color: var(--backgroundLight);
+    }
+
+    &Info {
+        margin-top: 20px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+
+    &Category,
+    &Date {
+        width: fit-content;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        background: var(--backgroundLight);
+        padding: 20px;
+        border-radius: 20px;
+        font-size: 1rem;
+        color: var(--paragraph);
+    }
+
+    &Category {
+        text-transform: uppercase;
+    }
+
+    &Date {
+        color: var(--paragraph);
+    }
+
+    &Title {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        font-weight: 500;
+        font-size: 1.5rem;
+        color: #ffffff;
+        padding: 12px;
+        text-align: center;
+        background: #00000070;
+    }
+
+    &Text {
+        margin-top: 20px;
+        font-size: 0.9rem;
+        background: var(--backgroundLight);
+        border-radius: 20px;
+        padding: 14px;
+        text-align: center;
+        color: var(--paragraph);
+    }
+
+    &Bottom {
+        margin-top: 14px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+
+    &Author {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        background: var(--backgroundLight);
+        padding: 14px;
+        border-radius: 20px;
+        width: fit-content;
+
+        img {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        &Link {
+            color: var(--paragraph);
+            font-size: 1rem;
+        }
+    }
+
+    &ReadMore {
+        font-size: 0.6875rem;
+        color: var(--primary);
+        display: flex;
+        gap: 2px;
+        align-items: center;
+        transition: 0.3s;
+
+        &:hover {
+            transform: translateX(2px);
+        }
+    }
+
+    &Arrow {
+        transform: rotate(180deg);
+        height: 13px;
+        width: 13px;
+
+        path {
+            stroke: var(--primary);
+        }
+    }
+
+    &Menu {
+        position: absolute;
+        top: 9px;
+        right: 16px;
+    }
+}

@@ -1,0 +1,41 @@
+.weather {
+    width: 100%;
+
+    &Month {
+        font-size: 21px;
+        font-weight: 500;
+        color: var(--title);
+    }
+
+    &Day {
+        margin-top: 5px;
+        font-size: 13px;
+        font-weight: 400;
+        color: var(--secondaryTextColor);
+    }
+
+    &Row {
+        margin-top: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    &Temp {
+        color: var(--paragraph);
+        display: flex;
+
+        &Value {
+            font-size: 52px;
+            font-weight: 500;
+            line-height: 52px;
+        }
+    }
+
+    &Location {
+        font-size: 14px;
+        font-weight: 400;
+        text-transform: capitalize;
+        color: var(--paragraph);
+    }
+}
