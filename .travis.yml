@@ -9,7 +9,7 @@ cache:
     - server/node_modules
 
 install:
-  - cd client && npm ci && cd ..
+  - cd client && npm install --only=dev && npm install && cd ..
   - cd server && npm ci --force && cd ..
 
 script:
