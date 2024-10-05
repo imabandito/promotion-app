@@ -27,7 +27,7 @@ app.use('/articles', articlesRoutes);
 mongoose.connect(process.env.MONGO_URI!)
   .then(() => {
     app.listen(PORT ,() => {
-      console.log(`Server running on ${process.env.API_URL}`);
+      console.log(`Server running on ${process.env.API_URL}:${process.env.PORT}`);
     });
   })
   .catch((err) => console.error(err));
