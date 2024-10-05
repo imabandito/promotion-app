@@ -19,6 +19,7 @@ script:
 deploy:
   - provider: heroku
     app: promotion-app-api
+    edge: true  
     api_key: $HEROKU_API_KEY
     on:
       branch: master
@@ -27,6 +28,7 @@ deploy:
       - npm start
   - provider: heroku
     app: promotion-app-client
+    edge: true  
     api_key: $HEROKU_API_KEY
     on:
       branch: master
