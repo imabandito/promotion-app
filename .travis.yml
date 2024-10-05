@@ -1,0 +1,33 @@
+language: node_js
+node_js:
+  - "22"
+
+cache:
+  directories:
+    - client/node_modules
+    - server/node_modules
+
+install:
+  - cd client && npm install && cd ..
+  - cd server && npm install && cd ..
+
+script:
+  - cd client && npm run build && cd ..
+  - cd server && npm run build && cd ..
+
+deploy:
+  - provider: heroku
+    app: promotion-app-api
+    api_key: $HEROKU_API_KEY
+    on:
+      branch: master
+    run:
+      - npm run build
+      - npm start
+  - provider: heroku
+    app: promotion-app-client
+    api_key: $HEROKU_API_KEY
+    on:
+      branch: master
+    run:
+      - npm run build
