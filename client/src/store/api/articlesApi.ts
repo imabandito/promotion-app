@@ -25,7 +25,7 @@ const articlesApi = createApi({
       }),
       providesTags:['Articles'],
       transformResponse:(response:{articles:IArticle[]})=>response.articles,
-      async onQueryStarted(arg, { dispatch, queryFulfilled }) {
+      async onQueryStarted(_, { dispatch, queryFulfilled }) {
         try {
           await queryFulfilled;
         } catch (error: any) {
@@ -45,7 +45,7 @@ const articlesApi = createApi({
         method: 'GET',
       }),
       transformResponse:(response:{article:IArticle})=>response.article,
-      async onQueryStarted(arg, { dispatch, queryFulfilled }) {
+      async onQueryStarted(_, { dispatch, queryFulfilled }) {
         try {
           await queryFulfilled;          
         } catch (error: any) {
@@ -66,7 +66,7 @@ const articlesApi = createApi({
         body: data,
       }),
       invalidatesTags:['Articles'],
-      async onQueryStarted(arg, { dispatch, queryFulfilled }) {
+      async onQueryStarted(_, { dispatch, queryFulfilled }) {
         try {
           await queryFulfilled;
           dispatch(
@@ -92,7 +92,7 @@ const articlesApi = createApi({
         method: 'GET',
       }),
       transformResponse:(response:{categories:ICategory[]})=>response.categories,
-      async onQueryStarted(arg, { dispatch, queryFulfilled }) {
+      async onQueryStarted(_, { dispatch, queryFulfilled }) {
         try {
           const { data } = await queryFulfilled;
 
@@ -114,7 +114,7 @@ const articlesApi = createApi({
         method: 'DELETE',
       }),
       invalidatesTags:['Articles'],
-      async onQueryStarted(arg, { dispatch, queryFulfilled }) {
+      async onQueryStarted(_, { dispatch, queryFulfilled }) {
         try {
           await queryFulfilled;
           dispatch(
@@ -141,7 +141,7 @@ const articlesApi = createApi({
         body: data,
       }),
       invalidatesTags:['Articles'],
-      async onQueryStarted(arg, { dispatch, queryFulfilled }) {
+      async onQueryStarted(_, { dispatch, queryFulfilled }) {
         try {
           await queryFulfilled;
           dispatch(
