@@ -24,11 +24,10 @@ app.use(passport.initialize());
 app.use('/auth', authRoutes);
 app.use('/articles', articlesRoutes);
 
-//'192.168.0.101'
 mongoose.connect(process.env.MONGO_URI!)
   .then(() => {
     app.listen(PORT ,() => {
-      console.log(`Server running on http://localhost:${PORT}`);
+      console.log(`Server running on ${process.env.API_URL}`);
     });
   })
   .catch((err) => console.error(err));

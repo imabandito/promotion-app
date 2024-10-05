@@ -3,7 +3,6 @@ import jwt from 'jsonwebtoken';
 
 export const authenticateJWT = (req: Request, res: Response, next: NextFunction) => {
   const token = req.headers.authorization?.split(' ')[1];
-  // console.log('req.headers.authorization',req.headers.authorization);
   
   console.log('token',token);
   
@@ -16,9 +15,7 @@ export const authenticateJWT = (req: Request, res: Response, next: NextFunction)
       req.user = user;
       next();
     });
-  } else {
-    console.log('authenticateJWT 401');
-    
+  } else {    
     return res.status(401).json({ message: "User unauthorized" });
   }
 };

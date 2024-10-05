@@ -27,7 +27,7 @@ router.get(
 );
 router.get('/google/callback',
     passport.authenticate('google', {
-        failureRedirect: '/',
+        failureRedirect: '/login',
 		session: false
     }),
     function (req, res) {
@@ -38,7 +38,6 @@ router.get('/google/callback',
 			maxAge: 30 * 7 * 24 * 60 * 60 * 1000, // 30 days
 		});
         res.redirect(process.env.CLIENT_URL!)
-
     }
 );
 
@@ -55,7 +54,6 @@ router.post("/login", (req, res, next) => {
 					.status(401)
 					.json({ message: info.message || "Login failed" });
 			}
-
 			req.user = user;
 			loginUser(req, res);
 		}

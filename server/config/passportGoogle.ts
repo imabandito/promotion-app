@@ -10,7 +10,7 @@ dotenv.config();
 passport.use(new GoogleStrategy({
   clientID: process.env.GOOGLE_CLIENT_ID  as string,
   clientSecret: process.env.GOOGLE_CLIENT_SECRET  as string,
-  callbackURL: 'http://localhost:5001/auth/google/callback',
+  callbackURL: process.env.GOOGLE_CALLBACK_URL,
 },
 async (accessToken, refreshToken, profile, done) => {
   
@@ -35,10 +35,7 @@ async (accessToken, refreshToken, profile, done) => {
       await token.save();
     }else{
       token = await Token.create({ user: user._id, refreshToken: newRefreshToken });
-    }
-
-    console.log('STRATEGY', { user, accessToken: newAccessToken, refreshToken: newRefreshToken });
-    
+    }    
 
     done(null, { user, accessToken: newAccessToken, refreshToken: newRefreshToken });
 
@@ -46,8 +43,3 @@ async (accessToken, refreshToken, profile, done) => {
     done(error, undefined);
   }
 }));
-
-// passport.serializeUser((user: any, done) => done(null, user.id));
-// passport.deserializeUser((id, done) => {
-//   User.findById(id, (err: any, user: any) => done(err, user));
-// });
