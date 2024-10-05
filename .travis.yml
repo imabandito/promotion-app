@@ -25,7 +25,6 @@ deploy:
       branch: master
     run:
       - npm run build
-      - npm start
   - provider: heroku
     app: promotion-app-client
     edge: true  
