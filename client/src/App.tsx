@@ -1,10 +1,10 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import { AddArticle } from './pages/AddArticle/AddArticle';
-import { Auth } from './pages/Auth/Auth';
-import { Dashboard } from './pages/Dashboard/Dashboard';
-import { Profile } from './pages/Profile/Profile';
+import { AddArticle } from './pages/AddArticle/AddArticle.tsx';
+import { Auth } from './pages/Auth/Auth.tsx';
+import { Dashboard } from './pages/Dashboard/Dashboard.tsx';
+import { Profile } from './pages/Profile/Profile.tsx';
 import { Error } from './pages/Error/Error.tsx';
-import { ProtectedRoute } from './routes/ProtectedRoute/ProtectedRoute';
+import { ProtectedRoute } from './routes/ProtectedRoute/ProtectedRoute.tsx';
 import { Terms } from './pages/Terms/Terms.tsx';
 import { Article } from './pages/Article/Article.tsx';
 import { PublicRoute } from './routes/PublicRoute/PublicRoute.tsx';
