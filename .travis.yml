@@ -10,7 +10,7 @@ cache:
 
 install:
   - cd client && npm install && cd ..
-  - cd server && npm install && cd ..
+  - cd server && npm install --force && cd ..
 
 script:
   - cd client && npm run build && cd ..
