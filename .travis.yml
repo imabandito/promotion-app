@@ -12,6 +12,10 @@ install:
   - cd client && npm ci && cd ..
   - cd server && npm ci --force && cd ..
 
+script:
+  - cd client && npm run build && cd ..
+  - cd server && npm run build && cd ..
+
 deploy:
   - provider: heroku
     app: promotion-app-api
