@@ -12,6 +12,7 @@ import {
 } from "../controllers/authController";
 import multer from "multer";
 import { authenticateJWT } from "../middleware/authMiddleware";
+import { oneMonthInMs } from "../constants";
 
 const router = express.Router();
 
@@ -36,8 +37,7 @@ router.get(
 		res.cookie("refreshToken", refreshToken, {
 			httpOnly: true,
 			secure: process.env.NODE_ENV === "production",
-			sameSite: "none",
-			maxAge: 30 * 7 * 24 * 60 * 60 * 1000, // 30 days
+			maxAge: oneMonthInMs,
 		});
 		res.redirect(process.env.CLIENT_URL!);
 	}

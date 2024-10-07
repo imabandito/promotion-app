@@ -17,7 +17,7 @@ export const EditAccountPassword = () => {
     useForm<IEditAccountPasswordFormValues>({
       mode: 'onBlur',
     });
-  const [resetPassword] = useResetPasswordMutation();
+  const [resetPassword, { isLoading }] = useResetPasswordMutation();
 
   const onSubmit = async (data: IEditAccountPasswordFormValues) => {
     try {
@@ -42,7 +42,7 @@ export const EditAccountPassword = () => {
           placeholder="Enter your current password"
           extraClass={styles.accountPasswordTitle}
           type="password"
-          autoComplete='password'
+          autoComplete="password"
           register={{
             ...register('oldPassword', {
               required: 'Old Password is required',
@@ -56,7 +56,7 @@ export const EditAccountPassword = () => {
           placeholder="Enter your new password"
           extraClass={styles.accountPasswordTitle}
           type="password"
-          autoComplete='new-password'
+          autoComplete="new-password"
           register={{
             ...register('newPassword', {
               required: 'New Password is required',
@@ -73,7 +73,7 @@ export const EditAccountPassword = () => {
           placeholder="Enter your new password again"
           extraClass={styles.signupPasswordConfirm}
           type="password"
-          autoComplete='new-password'
+          autoComplete="new-password"
           register={register('confirmPassword', {
             required: 'Confirm Password is required',
             validate: (value) =>
@@ -92,7 +92,7 @@ export const EditAccountPassword = () => {
           >
             Cancel
           </Button>
-          <Button weight="light" disabled={!isValid}>
+          <Button weight="light" disabled={!isValid || isLoading}>
             Save
           </Button>
         </div>

@@ -11,7 +11,7 @@ export const EditAccountAvatar = () => {
   const onFilesDrop = (files: File[]) => {
     setFile(files[0]);
   };
-  const [uploadAvatar] = useUploadAvatarMutation();
+  const [uploadAvatar, { isLoading }] = useUploadAvatarMutation();
 
   const handleUpload = async () => {
     const formData = new FormData();
@@ -37,7 +37,11 @@ export const EditAccountAvatar = () => {
         <Button color="white" weight="light" onClick={handleCancel}>
           Cancel
         </Button>
-        <Button weight="light" onClick={handleUpload} disabled={!file}>
+        <Button
+          weight="light"
+          onClick={handleUpload}
+          disabled={!file || isLoading}
+        >
           Save
         </Button>
       </div>
