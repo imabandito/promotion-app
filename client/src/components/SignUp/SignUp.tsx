@@ -22,7 +22,7 @@ export interface ISignUpFormValues {
 }
 
 export const SignUp = () => {
-  const [signup] = useSignupMutation();
+  const [signup, { isLoading }] = useSignupMutation();
   const isAuthenticated = useSelector(
     (state: RootState) => state.auth.isAuthenticated
   );
@@ -132,7 +132,10 @@ export const SignUp = () => {
             <SimpleLink text=" Terms and Policy." to="/terms" />
           </div>
         </div>
-        <Button extraClass={styles.signupButton} disabled={!isValid}>
+        <Button
+          extraClass={styles.signupButton}
+          disabled={!isValid || isLoading}
+        >
           Get started now
         </Button>
       </form>

@@ -26,7 +26,7 @@ export const Login = () => {
   const isAuthenticated = useSelector(
     (state: RootState) => state.auth.isAuthenticated
   );
-  const [login] = useLoginMutation();
+  const [login, { isLoading }] = useLoginMutation();
 
   const onSubmit = async () => {
     await login(formValues);
@@ -73,7 +73,7 @@ export const Login = () => {
         />
         <Button
           extraClass={styles.loginButton}
-          disabled={!isValid}
+          disabled={!isValid || isLoading}
           type="submit"
         >
           Sign in

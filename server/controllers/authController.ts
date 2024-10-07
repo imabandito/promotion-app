@@ -3,6 +3,7 @@ import jwt from "jsonwebtoken";
 import bcrypt from "bcryptjs";
 import User from "../models/User";
 import Token from "../models/Token";
+import { oneMonthInMs } from "../constants";
 
 export const generateToken = (user: any) => {
 	return jwt.sign({ id: user._id }, process.env.JWT_SECRET!, {
@@ -55,8 +56,7 @@ export const loginUser = async (req: Request, res: Response) => {
 		res.cookie("refreshToken", refreshToken, {
 			httpOnly: true,
 			secure: process.env.NODE_ENV === "production",
-			sameSite: "none",
-			maxAge: 30 * 7 * 24 * 60 * 60 * 1000, // 30 days
+			maxAge: oneMonthInMs,
 		});
 
 		res.json({ user: returnUser, token });
@@ -97,8 +97,7 @@ export const signupUser = async (req: Request, res: Response) => {
 		res.cookie("refreshToken", refreshToken, {
 			httpOnly: true,
 			secure: process.env.NODE_ENV === "production",
-			sameSite: "none",
-			maxAge: 30 * 7 * 24 * 60 * 60 * 1000, // 30 days
+			maxAge: oneMonthInMs,
 		});
 		res.json({ user: returnUser, token });
 	} catch (error) {
@@ -137,8 +136,7 @@ export const refreshUser = async (req: Request, res: Response) => {
 	res.cookie("refreshToken", newRefreshToken, {
 		httpOnly: true,
 		secure: process.env.NODE_ENV === "production",
-		sameSite: "none",
-		maxAge: 30 * 7 * 24 * 60 * 60 * 1000, // 30 days
+		maxAge: oneMonthInMs,
 	});
 	res.set("Cache-Control", "no-store").json({ user: returnUser, token });
 };

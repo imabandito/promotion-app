@@ -22,7 +22,7 @@ export const EditAccountInfo = () => {
   const { dirtyFields, errors, isValid, isDirty } = formState;
 
   const user = useSelector((state: RootState) => state.auth.user);
-  const [editInfo] = useUpdateUserInfoMutation();
+  const [editInfo, { isLoading }] = useUpdateUserInfoMutation();
 
   const onSubmit = async (data: IEditAccountInfoFormValues) => {
     await editInfo(data);
@@ -80,7 +80,11 @@ export const EditAccountInfo = () => {
           <Button color="white" weight="light" onClick={onCancel} type="button">
             Cancel
           </Button>
-          <Button weight="light" disabled={!isValid || !isDirty} type="submit">
+          <Button
+            weight="light"
+            disabled={!isValid || !isDirty || isLoading}
+            type="submit"
+          >
             Save
           </Button>
         </div>

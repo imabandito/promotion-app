@@ -1,4 +1,4 @@
-.button{
+.button {
     width: 100%;
     padding: 16px;
     text-align: center;
@@ -9,11 +9,11 @@
     font-weight: 500;
     transition: 0.5s;
 
-    &:hover{
+    &:hover {
         background-color: var(--status);
     }
 
-    &Image{
+    &Image {
         width: 70px;
         height: 48px;
         border-radius: 6px;
@@ -24,60 +24,60 @@
         box-shadow: 0px 1px 4px #0000001a;
         transition: 0.5s;
 
-        &:hover{
+        &:hover {
             box-shadow: 0px 1px 4px #0000004d;
         }
 
-        img{
+        img {
             max-height: 48px;
         }
     }
 
-    &Combine{
+    &Combine {
         max-width: fit-content;
         padding: 11px 22px;
         font-size: 0.875rem;
         background-color: var(--primary);
         border-radius: 3px;
-        color: var(--backgroundLight);
+        color: #fff;
         display: flex;
         gap: 9px;
-    
-        &:hover{
+
+        &:hover {
             background-color: var(--status);
         }
     }
 
-    &light{
+    &light {
         padding: 12px 33px 10px;
         font-size: 0.875rem;
         font-weight: 500;
     }
 
-    &white{
+    &white {
         border: 1px solid var(--titleLight);
         color: var(--secondaryTextColor);
         background-color: var(--backgroundLight);
 
-        &:hover{
+        &:hover {
             background-color: var(--background);
         }
     }
 
-    &grey{
+    &grey {
         background-color: var(--background);
         color: var(--title);
 
-        &:hover{
+        &:hover {
             background-color: var(--titleLight);
         }
     }
 
-    &fit{
+    &fit {
         width: fit-content;
     }
 
-    &:disabled{
+    &:disabled {
         cursor: not-allowed;
         background-color: #bac4ea;
     }
