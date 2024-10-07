@@ -7,9 +7,7 @@ passport.use(new LocalStrategy({
   usernameField: 'email',
 },
 async (email, password, done) => {
-  try {
-    console.log('passport.use(new LocalStrategy', email, password);
-    
+  try {    
     const user = await User.findOne({ email });
     if (!user) {
       return done(null, false, { message: 'User does not exist' });

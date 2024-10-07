@@ -22,23 +22,25 @@ router.get(
 	passport.authenticate("google", {
 		scope: ["profile", "email"],
 		session: false,
-		accessType: 'offline',
+		accessType: "offline",
 	})
 );
-router.get('/google/callback',
-    passport.authenticate('google', {
-        failureRedirect: '/login',
-		session: false
-    }),
-    function (req, res) {
+router.get(
+	"/google/callback",
+	passport.authenticate("google", {
+		failureRedirect: `${process.env.CLIENT_URL}/login`,
+		session: false,
+	}),
+	function (req, res) {
 		const { user, accessToken, refreshToken } = req.user as any;
 		res.cookie("refreshToken", refreshToken, {
 			httpOnly: true,
+			secure: process.env.NODE_ENV === "production",
 			sameSite: "strict",
 			maxAge: 30 * 7 * 24 * 60 * 60 * 1000, // 30 days
 		});
-        res.redirect(process.env.CLIENT_URL!)
-    }
+		res.redirect(process.env.CLIENT_URL!);
+	}
 );
 
 router.post("/login", (req, res, next) => {
@@ -62,9 +64,7 @@ router.post("/login", (req, res, next) => {
 router.post("/signup", signupUser);
 router.post("/logout", logoutUser);
 router.get("/refresh", refreshUser);
-router.get("/user", 
-	authenticateJWT, 
-	getUserInfo);
+router.get("/user", authenticateJWT, getUserInfo);
 router.post("/updateuserinfo", updateUserInfo);
 router.post(
 	"/upload-avatar",

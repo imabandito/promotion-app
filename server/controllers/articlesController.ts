@@ -7,8 +7,6 @@ import { ObjectId } from "mongoose";
 const pageSize = 100;
 
 export const getArticles = async (req: Request, res: Response) => {
-	console.log("getArticles", req.params);
-
 	try {
 		const page = +req.params.page || 1;
 		const articles = await Article.find()
@@ -29,8 +27,6 @@ export const getArticles = async (req: Request, res: Response) => {
 };
 
 export const addArticle = async (req: Request, res: Response) => {
-	console.log("addArticle", req.body, req.file);
-
 	try {
 		const { category, title, text, image } = req.body;
 		const author = await User.findById((req.user as any).id).select(
@@ -58,21 +54,15 @@ export const addArticle = async (req: Request, res: Response) => {
 };
 
 export const getCategories = async (req: Request, res: Response) => {
-	console.log("getCategories");
-
 	try {
 		const categories = await Category.find();
 		const categoriesRes = categories.map(({ name, _id }) => ({
 			name,
 			id: _id,
 		}));
-		console.log("categoriesRes", categoriesRes);
 
 		res.json({ categories: categoriesRes });
-		// res.status(500).json({ message: "Server error" });
 	} catch (e) {
-		console.log("getCategories error", e);
-
 		res.status(500).json({ message: "Server error" });
 	}
 };
@@ -117,8 +107,6 @@ export const editArticle = async (req: Request, res: Response) => {
 };
 
 export const deleteArticle = async (req: Request, res: Response) => {
-	console.log("deleteArticle", req.params);
-
 	try {
 		const { id } = req.params;
 		const user = await User.findById((req.user as any).id);
@@ -142,8 +130,6 @@ export const deleteArticle = async (req: Request, res: Response) => {
 };
 
 export const getArticle = async (req: Request, res: Response) => {
-	console.log("getArticle", req.params);
-
 	try {
 		const { id } = req.params;
 		if (!id) {
@@ -162,7 +148,6 @@ export const getArticle = async (req: Request, res: Response) => {
 		}
 
 		res.json({ article });
-		// res.json({ article: {name: 'test' }});
 	} catch (e) {
 		res.status(500).json({ message: "Server error" });
 	}
