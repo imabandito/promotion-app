@@ -37,6 +37,7 @@ router.get(
 		res.cookie("refreshToken", refreshToken, {
 			httpOnly: true,
 			secure: process.env.NODE_ENV === "production",
+			sameSite: process.env.NODE_ENV === "production" ? "none" : "strict",
 			maxAge: oneMonthInMs,
 		});
 		res.redirect(process.env.CLIENT_URL!);
