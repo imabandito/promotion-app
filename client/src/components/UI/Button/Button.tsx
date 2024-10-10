@@ -12,7 +12,7 @@ interface IButtonProps extends React.ComponentPropsWithoutRef<'button'> {
   size?: 'fluid' | 'fit';
 }
 
-export const Button = ({
+export const Button: React.FC<IButtonProps> = ({
   extraClass,
   lookType = 'text',
   iconName,
@@ -22,7 +22,7 @@ export const Button = ({
   size = 'fluid',
   children,
   ...rest
-}: IButtonProps) => {
+}) => {
   const generalClasses = classNames(
     styles[`button${weight}`],
     styles[`button${color}`],

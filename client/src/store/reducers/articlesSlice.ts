@@ -36,7 +36,7 @@ const initialSorting: ICategory[] = [
   },
 ];
 
-interface ArticlesState {
+export interface ArticlesState {
   fullCategories: ICategory[];
   sortingTypes: ICategory[];
   sortingType: string;
@@ -54,7 +54,7 @@ const initialState: ArticlesState = {
   sortingTypes: initialSorting,
   sortingType: initialSorting[0].id,
   filter: 'all',
-  search: ''
+  search: '',
 };
 
 const articleSlice = createSlice({
@@ -70,17 +70,13 @@ const articleSlice = createSlice({
     setFilter: (state, { payload }: PayloadAction<string>) => {
       state.filter = payload;
     },
-    setSearch: (state, {payload}: PayloadAction<string>) =>{
+    setSearch: (state, { payload }: PayloadAction<string>) => {
       state.search = payload;
     },
   },
 });
 
-export const {
-  setCategories,
-  setSortingType,
-  setFilter,
-  setSearch,
-} = articleSlice.actions;
+export const { setCategories, setSortingType, setFilter, setSearch } =
+  articleSlice.actions;
 
 export default articleSlice.reducer;

@@ -12,14 +12,12 @@ export interface User {
 interface AuthState {
   isAuthenticated: boolean;
   user: User | null;
-  isLoading: boolean
 }
 
 
 const initialState: AuthState = {
   isAuthenticated: false,
   user: null,
-  isLoading: true
 };
 
 const authSlice = createSlice({
@@ -48,9 +46,6 @@ const authSlice = createSlice({
     removeUser: (state) => {
       state.user = null
     },
-    setLoading: (state, {payload}: PayloadAction<boolean>) => {
-      state.isLoading = payload;
-    },
     setUserAuth: (state, {payload:{token, user}}:PayloadAction<{ token?: string, user?: User}>) =>{
       if(token){
         localStorage.setItem('token', token);
@@ -68,6 +63,6 @@ const authSlice = createSlice({
   },
 });
 
-export const { setAuth, clearAuth, setUser, removeUser, setLoading, setUserAvatar, setUserAuth, logoutUser } = authSlice.actions;
+export const { setAuth, clearAuth, setUser, removeUser, setUserAvatar, setUserAuth, logoutUser } = authSlice.actions;
 
 export default authSlice.reducer;

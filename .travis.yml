@@ -8,6 +8,10 @@ cache:
     - client/node_modules
     - server/node_modules
 
+branches:
+  only:
+    - master
+
 install:
   - cd client && npm ci && cd ..
   - cd server && npm ci --force && cd ..
@@ -19,7 +23,7 @@ script:
 deploy:
   - provider: heroku
     app: promotion-app-api
-    edge: true  
+    edge: true
     api_key: $HEROKU_API_KEY
     on:
       branch: master
@@ -27,7 +31,7 @@ deploy:
       - npm run build
   - provider: heroku
     app: promotion-app-client
-    edge: true  
+    edge: true
     api_key: $HEROKU_API_KEY
     on:
       branch: master

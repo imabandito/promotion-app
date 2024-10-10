@@ -9,7 +9,7 @@ interface ILoaderProps{
 export const Loader = ({extraClass, position = 'absolute'}: ILoaderProps)=> {
     const classes = classNames(styles.loader, extraClass, styles[position])
   return (
-    <div className={classes}>
+    <div className={classes} data-testid="loader">
         <div></div>
         <div></div>
         <div></div>

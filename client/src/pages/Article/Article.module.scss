@@ -73,8 +73,9 @@
         background: var(--backgroundLight);
         border-radius: 20px;
         padding: 14px;
-        text-align: center;
+        text-align: justify;
         color: var(--paragraph);
+        white-space: break-spaces;
     }
 
     &Bottom {

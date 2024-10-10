@@ -11,14 +11,14 @@ interface ITextInputProps extends React.ComponentPropsWithoutRef<'input'> {
   error?: string | boolean;
 }
 
-export const TextInput = ({
+export const TextInput: React.FC<ITextInputProps> = ({
   title,
   extraClass,
   hint,
   register,
   error,
   ...rest
-}: ITextInputProps) => {
+}) => {
   const classes = classNames(styles.textInput, extraClass, {
     [styles.textInputError]: error,
   });

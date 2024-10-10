@@ -4,31 +4,9 @@ import { WeatherWidget } from './WeatherWidget';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
 import { useLazyGetWeatherQuery } from '../../store/api/weatherApi';
-import { format } from 'date-fns';
 
 jest.mock('../../store/api/weatherApi', () => ({
   useLazyGetWeatherQuery: jest.fn(),
-}));
-
-jest.mock('date-fns', () => {
-  const original = jest.requireActual('date-fns');
-  return {
-    ...original,
-    format: jest.fn(original.format),
-  };
-});
-
-jest.mock('../Widget/Widget', () => ({
-  Widget: ({ title, children }: any) => (
-    <div data-testid="widget">
-      <h1>{title}</h1>
-      {children}
-    </div>
-  ),
-}));
-
-jest.mock('../UI/Loader/Loader', () => ({
-  Loader: () => <div data-testid="loader"></div>,
 }));
 
 const mockStore = configureStore([]);
@@ -36,13 +14,12 @@ const mockStore = configureStore([]);
 describe('WeatherWidget Component', () => {
   let store: any;
   let mockGetWeather: jest.Mock;
-  let mockFormat: jest.Mock;
 
   const mockWeatherState = {
     weather: {
       temparature: '21',
       city: 'Lviv',
-      date: new Date('2012-09-20T23:00:00Z'),
+      date: new Date('2012-09-20T00:00:00Z'),
       conditionIcon: 'sunny.png',
       condition: 'Sunny',
       country: 'Ukraine',
@@ -59,13 +36,6 @@ describe('WeatherWidget Component', () => {
       mockGetWeather,
       { isLoading: false, isSuccess: true },
     ]);
-
-    mockFormat = format as jest.Mock;
-    mockFormat.mockImplementation((_, formatStr: string) => {
-      if (formatStr === 'MMMM dd') return 'September 20';
-      if (formatStr === 'EEEE') return 'Friday';
-      return '';
-    });
 
     const mockGeolocation = {
       getCurrentPosition: jest.fn(),
@@ -125,8 +95,9 @@ describe('WeatherWidget Component', () => {
     renderComponent();
 
     const dayMonth = screen.getByText('September 20');
-    const dayWeek = screen.getByText('Friday');
     expect(dayMonth).toBeInTheDocument();
+
+    const dayWeek = screen.getByText('Thursday');
     expect(dayWeek).toBeInTheDocument();
 
     const temperature = screen.getByText('21');
@@ -140,7 +111,7 @@ describe('WeatherWidget Component', () => {
     expect(conditionImg.src).toContain('sunny.png');
   });
 
-  test('render fallback when isSuccess is false', () => {
+  test('does not render when isSuccess is false', () => {
     (useLazyGetWeatherQuery as jest.Mock).mockReturnValue([
       mockGetWeather,
       { isLoading: false, isSuccess: false },

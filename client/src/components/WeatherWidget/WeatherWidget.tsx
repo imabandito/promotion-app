@@ -35,13 +35,10 @@ export const WeatherWidget = () => {
       return;
     }
     navigator.geolocation.getCurrentPosition(async (position) => {
-      setTimeout(async () => {
         setIsLocationLoading(false);
-
         await getWeather(
           `${position.coords.latitude},${position.coords.longitude}`
         );
-      }, 0);
     }, rejectWeather);
   }, []);
 
@@ -54,7 +51,7 @@ export const WeatherWidget = () => {
 
   return (
     <Widget title="weather widget">
-      {(isLoading || isLocationLoading) && <Loader position="relative" />}
+      {(isLoading || isLocationLoading) && <Loader position="relative"/>}
       {isSuccess && (
         <div className={styles.weather} data-testid="widget-content">
           <div className={styles.weatherMonth}>{dayMonth}</div>

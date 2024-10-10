@@ -60,7 +60,7 @@ export const ArticleAction = ({ type }: IArticleActionProps) => {
     const formData = new FormData();
     formData.append('title', data.title);
     formData.append('text', data.text);
-    category && formData.append('category', category);
+    formData.append('category', category);
     file && formData.append('image', file);
 
     try {
@@ -84,23 +84,31 @@ export const ArticleAction = ({ type }: IArticleActionProps) => {
   };
 
   const handleCancel = () => {
-    reset();
-    setFile(null);
+    navigate(-1);
   };
 
   useEffect(() => {
     if (articleSuccess) {
       setCategory(article.category?.id);
+
       reset({
         title: article.title,
         text: article.text,
       });
       trigger();
+    } else if (type === 'new' && isCategoriesSuccess) {
+      setCategory(categories[0]?.id);
     }
     if (isArticleError || isCategoriesError) {
       navigate(-1);
     }
-  }, [article, articleSuccess, isArticleError, isCategoriesError]);
+  }, [
+    article,
+    articleSuccess,
+    isArticleError,
+    isCategoriesError,
+    isCategoriesSuccess,
+  ]);
 
   return (
     <div className={styles.articleAction}>
@@ -147,7 +155,7 @@ export const ArticleAction = ({ type }: IArticleActionProps) => {
               <br />
               <FilePicker
                 dropHandler={onFilesDrop}
-                allowedTypes={['.jpg', '.png']}
+                allowedTypes={['.jpg', '.png', '.jpeg']}
                 title="Add cover photo"
                 file={file}
               />

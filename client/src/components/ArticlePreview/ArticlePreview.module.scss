@@ -27,6 +27,8 @@
     &Info{
         display: flex;
         justify-content: space-between;
+        align-items: center;
+        gap: 10px;
     }
 
     &Category, &Date{
@@ -36,6 +38,10 @@
 
     &Category{
         text-transform: uppercase;
+    }
+
+    &Date{
+        text-align: right;
     }
 
     &Title{

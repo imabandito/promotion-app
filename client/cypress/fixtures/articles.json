@@ -1,0 +1,36 @@
+{
+  "articles": [
+    {
+      "author": {
+        "name": "Stepan",
+        "lastName": "Propan",
+        "id": "stepanpropan"
+      },
+      "category": {
+        "id": "media",
+        "name": "media"
+      },
+      "date": "2024-09-07T00:00:00.000Z",
+      "id": "1",
+      "title": "Article title",
+      "text": "Article text",
+      "image": "image.png"
+    },
+    {
+      "author": {
+        "name": "Smetan",
+        "lastName": "Propan",
+        "id": "stepanpropan"
+      },
+      "category": {
+        "id": "business",
+        "name": "business"
+      },
+      "date": "2024-09-07T00:00:00.000Z",
+      "id": "2",
+      "title": "Article title 2",
+      "text": "Article text 2",
+      "image": "image2.png"
+    }
+  ]
+}

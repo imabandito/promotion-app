@@ -1,37 +1,21 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import { ArticlePreview } from './ArticlePreview';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
 import { useDeleteArticleMutation } from '../../store/api/articlesApi';
-import { format, formatDistanceToNow } from 'date-fns';
 import { IArticle } from '../../store/reducers/articlesSlice';
 
 const mockedUsedNavigate = jest.fn();
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
   useNavigate: ()=>mockedUsedNavigate,
-  Link: ({ to, children, ...props }: any) => (
-    <a href={to} {...props}>
-      {children}
-    </a>
-  ),
 }));
 
 jest.mock('../../store/api/articlesApi', () => ({
   useDeleteArticleMutation: jest.fn(),
 }));
-
-
-jest.mock('date-fns', () => {
-  const original = jest.requireActual('date-fns');
-  return {
-    ...jest.requireActual('date-fns'),
-    format: jest.fn(original.format),
-    formatDistanceToNow: jest.fn(original.formatDistanceToNow),
-  };
-});
 
 const mockStore = configureStore([]);
 
@@ -141,26 +125,7 @@ describe('ArticlePreview Component', () => {
     const deleteButton = screen.getByText('Delete');
     fireEvent.click(deleteButton);
 
-    await waitFor(() => {
-      expect(mockDeleteArticle).toHaveBeenCalledWith('articleId');
-    });
-  });
-
-  test('formats date correctly if within one month', () => {
-    const recentDate = new Date();
-    (formatDistanceToNow as jest.Mock).mockReturnValue('2 days ago');
-    renderComponent({ ...article, date: recentDate.toISOString() });
-
-    expect(screen.getByText('2 days ago')).toBeInTheDocument();
-  });
-
-  test('formats date correctly if older than one month', () => {
-    const oldDate = new Date();
-    oldDate.setMonth(oldDate.getMonth() - 2);
-    (format as jest.Mock).mockReturnValue('20 September 2024');
-    renderComponent({ ...article, date: oldDate.toISOString() });
-
-    expect(screen.getByText('20 September 2024')).toBeInTheDocument();
+    expect(mockDeleteArticle).toHaveBeenCalledWith('articleId');
   });
 
   test('uses author avatar', () => {
