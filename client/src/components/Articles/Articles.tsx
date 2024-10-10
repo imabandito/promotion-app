@@ -9,20 +9,19 @@ import { Loader } from '../UI/Loader/Loader';
 import { ArticlePreview } from '../ArticlePreview/ArticlePreview';
 
 export const Articles = () => {
-  const {
-    search,
-    sortingType,
-    filter,
-  } = useSelector((state: RootState) => state.articles);
-  const {
-    isLoading: isCategoriesLoading,
-  } = useGetCategoriesQuery(null);
+  const { search, sortingType, filter } = useSelector(
+    (state: RootState) => state.articles
+  );
+  const { isLoading: isCategoriesLoading } = useGetCategoriesQuery(null);
   const {
     data: articles,
     isSuccess,
     isFetching,
   } = useGetArticlesQuery(
-    { q: search, sort: sortingType, filter }
+    { q: search, sort: sortingType, filter },
+    {
+      skip: isCategoriesLoading,
+    }
   );
 
   return (

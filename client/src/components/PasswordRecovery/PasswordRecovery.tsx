@@ -18,7 +18,7 @@ export const PasswordRecovery = () => {
   const {
     register,
     handleSubmit,
-    formState: { dirtyFields, errors, isValid },
+    formState: { dirtyFields, errors, isValid, isSubmitted },
   } = useForm<IRecoveryFormValues>({
     mode: 'onBlur',
   });
@@ -28,26 +28,30 @@ export const PasswordRecovery = () => {
       title="Password recovery"
       subtitle="Enter the email you're using for your account."
     >
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <TextInput
-          title="Email Address"
-          placeholder="Enter your email address"
-          extraClass={styles.forgotEmail}
-          register={{
-            ...register('email', {
-              required: 'Email is required',
-              pattern: {
-                value: emailRegex,
-                message: 'Invalid email address',
-              },
-            }),
-          }}
-          error={dirtyFields.email && errors.email?.message}
-        />
-        <Button extraClass={styles.forgotButton} disabled={!isValid}>
-          Reset
-        </Button>
-      </form>
+      {isSubmitted ? (
+        <div className={styles.forgotAfterSubmit}>New password was sent to your email</div>
+      ) : (
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <TextInput
+            title="Email Address"
+            placeholder="Enter your email address"
+            extraClass={styles.forgotEmail}
+            register={{
+              ...register('email', {
+                required: 'Email is required',
+                pattern: {
+                  value: emailRegex,
+                  message: 'Invalid email address',
+                },
+              }),
+            }}
+            error={dirtyFields.email && errors.email?.message}
+          />
+          <Button extraClass={styles.forgotButton} disabled={!isValid}>
+            Reset
+          </Button>
+        </form>
+      )}
       <SimpleLink
         text="Back to Login"
         to="/login"
