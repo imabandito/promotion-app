@@ -23,6 +23,7 @@
 
     "types": ["jest", "@testing-library/jest-dom"]
   },
-  "include": ["src", "jest.setup.ts", "cypress"],
+  "include": ["src", "jest.setup.ts"],
+  "exclude": ["cypress"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
