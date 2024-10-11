@@ -135,6 +135,7 @@ export const SignUp = () => {
         <Button
           extraClass={styles.signupButton}
           disabled={!isValid || isLoading}
+          type='submit'
         >
           Get started now
         </Button>

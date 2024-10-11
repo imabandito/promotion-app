@@ -28,7 +28,7 @@ export const TextInput: React.FC<ITextInputProps> = ({
       <label htmlFor={title}>{title}</label>
       <input type="text" id={title} {...rest} {...register} />
       <div className={styles.textInputErrorText}>
-        {hint && <span className={styles.textInputHint}>{hint}</span>}
+        {hint && !error && <span className={styles.textInputHint}>{hint}</span>}
         {error}
       </div>
     </div>

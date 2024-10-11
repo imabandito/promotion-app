@@ -1,6 +1,6 @@
 import 'cypress-intercept-formdata';
 
-describe('template spec', () => {
+describe('Articles', () => {
   beforeEach(() => {
     cy.visit('http://localhost:5173/login');
     cy.get('input[placeholder="Enter your email address"]').type(
