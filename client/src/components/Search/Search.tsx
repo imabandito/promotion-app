@@ -26,7 +26,7 @@ export const Search = ({ extraClass }: ISearchProps) => {
     const newUrlParams = new URLSearchParams(location.search);
     newUrlParams.set('search', searchValue);
     !searchValue && newUrlParams.delete('search');
-    navigate({ search: newUrlParams.toString() }, { replace: true });
+    navigate({pathname:'/', search: newUrlParams.toString() }, { replace: true });
   };
 
   const handleSearch = (e: ChangeEvent<HTMLInputElement>) => {

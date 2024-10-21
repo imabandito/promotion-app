@@ -29,7 +29,7 @@ export const SignUp = () => {
 
   const { register, handleSubmit, formState, watch, trigger } =
     useForm<ISignUpFormValues>({
-      mode: 'onBlur',
+      mode: 'onChange',
     });
   const { dirtyFields, errors, isValid } = formState;
 
