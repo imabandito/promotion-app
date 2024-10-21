@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useLazyGetWeatherQuery } from '../../store/api/weatherApi';
+import { useGetWeatherQuery } from '../../store/api/weatherApi';
 import { RootState } from '../../store/store';
 import { useDispatch, useSelector } from 'react-redux';
 import { Widget } from '../Widget/Widget';
@@ -10,12 +10,16 @@ import { setWidgetsStatuses } from '../../store/reducers/widgetsSlice';
 
 export const WeatherWidget = () => {
   const dispatch = useDispatch();
-  const [getWeather, { isLoading, isSuccess }] = useLazyGetWeatherQuery();
-  const { temparature, city, date, conditionIcon, condition, country } =
-    useSelector((state: RootState) => state.weather);
+
   const [dayMonth, setDayMonth] = useState('');
   const [isLocationLoading, setIsLocationLoading] = useState(false);
   const [dayWeek, setDayWeek] = useState('');
+  const [locationQuery, setLocationQuery] = useState('');
+  const {isLoading, isSuccess } = useGetWeatherQuery(locationQuery,{
+    skip: !locationQuery
+  });
+  const { temparature, city, date, conditionIcon, condition, country } =
+    useSelector((state: RootState) => state.weather);
 
   const rejectWeather = () => {
     setIsLocationLoading(false);
@@ -36,9 +40,7 @@ export const WeatherWidget = () => {
     }
     navigator.geolocation.getCurrentPosition(async (position) => {
         setIsLocationLoading(false);
-        await getWeather(
-          `${position.coords.latitude},${position.coords.longitude}`
-        );
+        setLocationQuery(`${position.coords.latitude},${position.coords.longitude}`);
     }, rejectWeather);
   }, []);
 
